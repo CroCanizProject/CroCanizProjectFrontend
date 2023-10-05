@@ -1,1 +1,55 @@
-<p>dashboard works!</p>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <title>Inicio</title>
+</head>
+
+<body>
+    <header class="barra">
+        <div class="user-profile">
+            <img src="../../../assets/img/canis-feliz logo del menu.png" alt="Foto de perfil">
+        </div>
+        <h1> Cro Caniz </h1>
+        <div class="search">
+            <input type="text" placeholder="Buscar">
+            <button><i class="fas fa-search"></i></button>
+        </div>
+
+        <nav>
+            <button (click)="logout()" type="button" class="btn btn-danger">Cerrar sesión</button>
+
+            <!-- <div class="dropdown">
+                <button type="button" class="btn btn-secondary dropdown-toggle" onclick="toggleDropdown()">Mostrar Lista</button>
+                <div class="dropdown-content" id="myDropdown">
+                    <ul class="dropdown-list">
+                        <li class="dropdown-item">Itemsss</li>
+                        <li class="dropdown-item">Item 2</li>
+                        <li class="dropdown-item">Item 3</li>
+                    </ul>
+                </div>
+            </div> -->
+        </nav>
+    </header>
+    <div class="dashboard">
+        <div class="sidebar">
+            <h1>Dashboard</h1>
+            <ul>
+                <li><a href="#"><img src="../../../assets/img/canis-feliz logo del menu.png" alt="Productos"> Productos</a></li>
+                <li><a href="#"><img src="venta.png" alt="Ventas"> Ventas</a></li>
+                <li><a href="#"><img src="cliente.png" alt="Clientes"> Clientes</a></li>
+                <li><a href="#"><img src="otroproducto.png" alt="Otro Producto"> Otro Producto</a></li>
+            </ul>
+        </div>
+
+        <div class="content">
+            <h2>Bienvenido</h2>
+            <!-- <p>Este es un panel de control simple.</p> -->
+        </div>
+    </div>
+</body>
+
+</html>

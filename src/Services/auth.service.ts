@@ -22,19 +22,19 @@ export class AuthService {
 
   }
 
-  storeToken(tokenValue:string){
-    localStorage.setItem('access_token', tokenValue)
+  storeToken(access_token:string){
+    localStorage.setItem('access_token', access_token)
   }
 
 
   getToken(){
-    return localStorage.getItem('tokenValue');
+    return localStorage.getItem('access_token');
   }
 
 
  
   isLoggenIn():boolean{
-    return !!localStorage.getItem('tokenValue')
+    return !!localStorage.getItem('access_token')
   }
 
   signOut(){

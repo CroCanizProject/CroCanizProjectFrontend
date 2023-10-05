@@ -27,6 +27,8 @@ ngOnInit() {
 }
 
 
+
+
 onLogin(){
   if(this.loginForm.valid){
     console.log(this.loginForm.value)
@@ -38,7 +40,7 @@ onLogin(){
         console.log(res.rolA.nameRole)
         
         this.auth.storeToken(res.access_token)
-        localStorage.setItem("token", res.access_token);
+        localStorage.setItem("access_token", res.access_token);
         this.router.navigate(['dashboard']);
         Swal.fire({
           position: 'top-end',
@@ -49,11 +51,11 @@ onLogin(){
         })
       },
     })
-    Swal.fire({
-      icon: 'error',
-      title: '¡Credenciales incorrectas!',
-      text: 'Usuario ó contraseña incorrecto. Favor de verificar',
-    })
+    // Swal.fire({
+    //   icon: 'error',
+    //   title: '¡Credenciales incorrectas!',
+    //   text: 'Usuario ó contraseña incorrecto. Favor de verificar',
+    // })
   }else{
     
     this.validateAllFormsFileds(this.loginForm);
