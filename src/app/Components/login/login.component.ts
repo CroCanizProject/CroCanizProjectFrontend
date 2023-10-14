@@ -21,8 +21,8 @@ constructor(private fb: FormBuilder,public router: Router,private auth:AuthServi
 
 ngOnInit() {
   this.loginForm = this.fb.group({
-      userName: ['', Validators.required],
-      password: ['', Validators.required]
+      email: [''],
+      password: ['']
     })
 }
 
@@ -30,14 +30,15 @@ ngOnInit() {
 
 
 onLogin(){
+  console.log(this.loginForm.value)
   if(this.loginForm.valid){
     console.log(this.loginForm.value)
     this.auth.signIn(this.loginForm.value)
     .subscribe({
       next: (res) =>{
-        console.log(res.access_token);
-        console.log(res.data.nameUser)
-        console.log(res.rolA.nameRole)
+        // console.log(res.access_token);
+        // console.log(res.data.nameUser)
+        // //console.log(res.rolA.nameRole)
         
         this.auth.storeToken(res.access_token)
         localStorage.setItem("access_token", res.access_token);
@@ -45,23 +46,23 @@ onLogin(){
         Swal.fire({
           position: 'top-end',
           icon: 'success',
-          title: 'Inicio de sesión correcto ¡Bienvenido!',
+          title: '¡Bienvenido!',
           showConfirmButton: false,
           timer: 1500,
         })
       },
     })
-    // Swal.fire({
-    //   icon: 'error',
-    //   title: '¡Credenciales incorrectas!',
-    //   text: 'Usuario ó contraseña incorrecto. Favor de verificar',
-    // })
+  //  Swal.fire({
+  //    icon: 'error',
+  //    title: '¡Credenciales incorrectas!',
+  //    text: 'Usuario ó contraseña incorrecto. Favor de verificar',
+  //   })
   }else{
     
     this.validateAllFormsFileds(this.loginForm);
    Swal.fire({
       icon: 'error',
-      title: '¡Error de formulario!',
+      title: '¡Error!',
       text: 'Al parecer aún no has llenado los campos',
     })
   }

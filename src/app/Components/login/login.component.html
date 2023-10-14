@@ -4,62 +4,57 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Inicio de Sesión</title>
+
 </head>
 
 <body>
-  <div class="login-container">
-    <div class="tenedor">
-      <img src="../../../assets/img/fondo.png" alt="Imagen de fondo" class="imagen-fondo">
-      <div class="superpuesta-container">
-        <img src="../../../assets/img/logo prin.png" alt="Imagen superpuesta" class="imagen-superpuesta">
+  <section class="vh-100">
+  <div class="container py-5 h-100">
+    <div class="row d-flex align-items-center justify-content-center h-100">
+      <!-- Opcional de agregar estilos a el div de arriba
+      style="border: solid; border-color: rgb(46, 44, 44); border-radius: 10px; box-shadow: 5px 5px 5px black;"> -->
+      <div class="col-md-8 col-lg-7 col-xl-6">
+        <img src="../../../assets/img/unidos.jpg"
+          class="img-fluid" alt="fondo">
+      </div>
+      <div class="col-md-7 col-lg-5 col-xl-5 offset-xl-1">
+        <br>
+        <h1 style="text-align: center;">CANIS-FELIZ</h1>
+        <br>
+        <h2>Inicio de Sesión</h2>
+        <br>
+        <form 
+        [formGroup]="loginForm">
+          <div class="form-group has-feedback">
+            <i class="fa fa-user form-control-feedback"></i>
+            <input type="email" class="form-control" formControlName="email" placeholder="Usuario:">
+          </div>
+          <small *ngIf="loginForm.controls['email'].dirty && loginForm.hasError('required', 'email')"
+            class="text-danger">*El usuario es requerido
+          </small> 
+          <br>
+          
+          <div class="form-group has-feedback">
+            <i class="fa-solid fa-lock form-control-feedback"></i>
+            <input type="password" class="form-control" formControlName="password" placeholder="Contraseña:">
+          </div>
+            <small *ngIf="loginForm.controls['password'].dirty && loginForm.hasError('required', 'password')"
+                class="text-danger">*Contraseña requerida
+          </small> 
+                <br>
+          <div class="d-grid gap-2">
+            <button (click)="onLogin()" class="btn btn-primary" type="submit">Ingresar</button>
+          </div>
+  
+          
+          <div class="container">
+            <img src="../../../assets/img/perritos_login.png" alt="Imagen de fondo" class="imagen-fondo">
+          </div>
+        </form>
       </div>
     </div>
-
-    <div class="form-container">
-      <h2 class="tituloLogin">Iniciar sesión</h2>
-      <form [formGroup]="loginForm">
-
-
-        <div class="form-group pt-3">
-          <div class="input-icon-container"
-            [class.error]="loginForm.controls['userName'].dirty && loginForm.hasError('required', 'userName')">
-            <i class="fa-solid fa-user"></i>
-            <input formControlName="userName" type="text" class="input-with-icon" placeholder="Usuario">
-          </div>
-        </div>
-
-        <small *ngIf="loginForm.controls['userName'].dirty && loginForm.hasError('required', 'userName')"
-          class="text-danger">*El usuario es requerido
-        </small>
-
-        <div class="form-group pt-3">
-          <label for="email">Contraseña:</label>
-
-
-          <div class="form-group pt-3">
-            <div class="input-icon-container"
-              [class.error]="loginForm.controls['password'].dirty && loginForm.hasError('required', 'password')">
-              <span class="fa fa-lock p-2"></span>
-              <input formControlName="password" [type]="type" class="input-with-icon" placeholder="Contraseña">
-              
-              <span (click)="ocultarContrasena()" class="fa {{eyeIcon}}"></span>
-            
-            </div>
-            <small *ngIf="loginForm.controls['password'].dirty && loginForm.hasError('required', 'password')"
-              class="text-danger">*Contraseña requerida</small>
-          </div>
-        </div>
-        <div class="d-grid gap-2">
-          <button (click)="onLogin()" class="btn btn-primary" type="submit">Ingresar</button>
-        </div>
-
-        
-        <div class="container">
-          <img src="../../../assets/img/perritos_login.png" alt="Imagen de fondo" class="imagen-fondo">
-        </div>
-      </form>
-    </div>
   </div>
+</section>
 </body>
 
 </html>

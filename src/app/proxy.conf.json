@@ -1,0 +1,6 @@
+{
+    "/api": {
+    "target": "https://backend.crocainz.live/",
+    "secure": false
+    }
+    }

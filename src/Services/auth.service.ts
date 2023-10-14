@@ -12,10 +12,10 @@ export class AuthService {
   constructor(private http:HttpClient, private router:Router) { }
 
   
-  url:string = "http://192.168.56.1:8000/api/"
+  url:string = "https://backend.crocainz.live/api/"
 
 
-  signIn(authentication: Auth):Observable<Auth>{
+  signIn(authentication: any):Observable<Auth>{
 
     let direccion = this.url + "login";
     return this.http.post<Auth>(direccion, authentication)

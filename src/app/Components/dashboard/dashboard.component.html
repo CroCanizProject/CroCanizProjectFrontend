@@ -38,15 +38,16 @@
         <div class="sidebar">
             <h1>Dashboard</h1>
             <ul>
-                <li><a href="#"><img src="../../../assets/img/canis-feliz logo del menu.png" alt="Productos"> Productos</a></li>
-                <li><a href="#"><img src="venta.png" alt="Ventas"> Ventas</a></li>
-                <li><a href="#"><img src="cliente.png" alt="Clientes"> Clientes</a></li>
-                <li><a href="#"><img src="otroproducto.png" alt="Otro Producto"> Otro Producto</a></li>
+                <li><a href="https://backend.crocainz.live"><img src="../../../assets/img/canis-feliz logo del menu.png" alt="Productos"></a></li>
+                <li><a [routerLink]="['/categories']"><img src="../../../assets/img/producto.png" style="width: 50px; height: 50px;"> Productos</a></li>
+                <li><a href="#"><img src="../../../assets/img/categorias.png" style="width: 50px; height: 50px;"> Categorias</a></li>
+                <li><a href="#"><img src="../../../assets/img/ventas.png" style="width: 50px; height: 50px;"> Ventas</a></li>
+                <li><a [routerLink]="['/suppliers']"><img src="../../../assets/img/proveedores.png" style="width: 50px; height: 50px;"> Provedoores</a></li>
             </ul>
         </div>
 
         <div class="content">
-            <h2>Bienvenido</h2>
+            <h2>Bienvenido Administrador</h2>
             <!-- <p>Este es un panel de control simple.</p> -->
         </div>
     </div>
