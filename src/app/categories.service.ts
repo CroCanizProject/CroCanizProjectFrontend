@@ -18,12 +18,24 @@ getCategories():Observable<any>{
 addCategory(data:any){
   return this.http.post(this.url+"categories",data)
 }
+
+
+updateCategory(id:any,data:any){
+  let direccion = this.url + "categories/" + id;
+  return this.http.put(direccion, data)
+}
+
+
 getCategory(id:any){
   return this.http.get(this.url+"categories/"+id)
 }
+
 deleteCategory(id:any){
-  return this.http.delete(this.url+"categories",id)
+  return this.http.delete(this.url+"categories/"+id)
 }
+
+
+
 
 }
 

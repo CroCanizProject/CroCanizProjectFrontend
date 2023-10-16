@@ -11,16 +11,16 @@
   <table class="table">
       <thead class="table table-danger">
         <tr>
-          <th scope="col">ID</th>
+          <th scope="col">NP</th>
           <th scope="col">Nombre</th>
           <th scope="col">Descripción</th>
           <th scope="col">Acciones</th>
         
         </tr>
       </thead>
-      <tbody *ngFor="let Category of categories.data">
+      <tbody *ngFor="let indice = index; let Category of categories.data">
         <tr>
-          <th scope="row">{{Category.id}}</th>
+          <th scope="row">{{indice+1}}</th>
           <th scope="row">{{Category.name}}</th>
           <th scope="row">{{Category.description}}</th>
           <th>

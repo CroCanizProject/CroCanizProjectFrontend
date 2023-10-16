@@ -20,7 +20,7 @@ getSupp(id:any){
   return this.http.get(this.url+"suppliers/"+id)
 }
 deleteSuppliers(id:any){
-  return this.http.delete(this.url+"suppliers",id)
+  return this.http.delete(this.url+"suppliers" + id)
 }
 
 }
