@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { CategoriesService } from 'src/app/categories.service';
+import { CategoriesService } from 'src/Services/categories.service';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -19,7 +19,7 @@ export class CategoriesComponent {
     })
   }
 
-  //Abrir modal
+  //Agregar nueva categoria
   Add() {
     var nombre: any
     var descripcion: any
@@ -132,7 +132,7 @@ export class CategoriesComponent {
 
   }
 
-
+//Eliminar categoria
   Delete(id: any) {
 
 
