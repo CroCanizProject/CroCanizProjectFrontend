@@ -13,6 +13,7 @@ import { SupplierComponent } from './Components/dashboard/supplier/supplier.comp
 import { MasterComponent } from './Components/master/master.component';
 import { HeaderMainComponent } from './Components/header-main/header-main.component';
 import { GeneralBarComponent } from './Components/general-bar/general-bar.component';
+import { ProductsComponent } from './Components/dashboard/products/products.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { GeneralBarComponent } from './Components/general-bar/general-bar.compon
     SupplierComponent,
     MasterComponent,
     HeaderMainComponent,
-    GeneralBarComponent
+    GeneralBarComponent,
+    ProductsComponent
   ],
   imports: [
     BrowserModule,

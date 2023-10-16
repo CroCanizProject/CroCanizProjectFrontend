@@ -1,0 +1,43 @@
+<app-header-main></app-header-main>
+
+<app-general-bar>
+  <br>
+  <h2 style="text-align: center;">Productos</h2>
+  
+  <div style="display: flex; justify-content: end;">
+      <button type="button"  class="btn btn-success" (click)="Add()" >Nuevo</button>   
+    </div>
+    <br>
+  <table class="table">
+      <thead class="table table-danger">
+        <tr>
+          <th scope="col">NP</th>
+          <th scope="col">Nombre</th>
+          <th scope="col">Descripción</th>
+          <th scope="col">Categoria</th>
+          <th scope="col">Proveedor</th>
+          <th scope="col">Imagen </th>
+          <th scope="col">Acciones</th>
+        </tr>
+      </thead>
+      <tbody *ngFor="let indice = index; let Productos of products.data">
+        <tr>
+          <th scope="row">{{indice+1}}</th>
+          <th scope="row">{{Productos.name}}</th>
+          <th scope="row">{{Productos.description}}</th>
+          <th scope="row">{{Productos.stock}}</th>
+          <th scope="row">{{Productos.category_id}}</th>
+          <th scope="row">{{Productos.supplier_id}}</th>
+
+
+
+          <th>
+            <div style="display: flex; flex-direction:row;">
+            <button type="button" style="margin-right: 10px;" class="btn btn-danger" (click)="Delete(Productos.id)">Eliminar</button>
+            <button type="button" class="btn btn-primary" (click)="Edit(Productos.id)">Editar</button>
+            </div>
+          </th>        
+        </tr>
+      </tbody> 
+    </table>
+</app-general-bar>

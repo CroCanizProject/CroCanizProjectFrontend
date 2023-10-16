@@ -6,6 +6,7 @@ import { CategoriesComponent } from './Components/dashboard/categories/categorie
 import { DashboardComponent } from './Components/dashboard/dashboard.component';
 import { AuthGuard } from './Guards/auth.guard';
 import { SupplierComponent } from './Components/dashboard/supplier/supplier.component';
+import { ProductsComponent } from './Components/dashboard/products/products.component';
 
 
 const ROUTES:Routes = [
@@ -14,7 +15,8 @@ const ROUTES:Routes = [
   {path: 'dashboard', component: DashboardComponent, pathMatch:'full', canActivate:[]},
   {path: 'categories',component: CategoriesComponent, canActivate: []},
   {path: 'suppliers',component: SupplierComponent, canActivate: []},
- 
+  {path: 'products',component: ProductsComponent, canActivate: []},
+
 
 ]
 

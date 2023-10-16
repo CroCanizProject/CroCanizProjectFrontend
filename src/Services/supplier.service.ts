@@ -36,5 +36,4 @@ deleteSupplier(id:any){
 
 
 
-
 }
