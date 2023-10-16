@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { CategoriesService } from 'src/Services/categories.service';
 import { ProductsService } from 'src/Services/products.service';
 import { SupplierService } from 'src/Services/supplier.service';
+import { DomSanitizer } from '@angular/platform-browser';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -12,15 +13,19 @@ import Swal from 'sweetalert2';
 export class ProductsComponent {
 
 
-  constructor(private service: ProductsService, private serviceP: SupplierService, private serviceC: CategoriesService){}
+  constructor(private service: ProductsService, private serviceP: SupplierService, private serviceC: CategoriesService, private sanitizer:DomSanitizer){}
  
-  products: any ={data: []};
+  products: any
   categorias: any
   provedores: any
+  urlImg: any
+  
 
   ngOnInit() {
     this.service.getProducts().subscribe((data) => {
       this.products = data
+      this.urlImg =this.products.data[0].image.url
+      console.log(this.urlImg)
     })
     this.serviceP.getSuppliers().subscribe((data) => {
       this.provedores = data
@@ -29,12 +34,15 @@ export class ProductsComponent {
     this.serviceC.getCategories().subscribe((data) => {
       this.categorias = data
     })
+    setTimeout(() => {
+      this.urlImg = this.sanitizer.bypassSecurityTrustUrl
+    }, 300);
   }
 
 
-//Agregar nuevo producto ya funcionaaaa
+//Agregar nuevo producto
 Add() {
-  
+  console.log(this.urlImg)
   var nombre: any
   var descripción: any
   var stock: any
@@ -134,7 +142,7 @@ Add() {
 }
 
 
-//Editar producto AQUI ESTA MI ERROR:(**************************************************************************
+//Editar producto
 Edit(id:any) {
   var producto:any
   this.service.getProduct(id).subscribe((item) =>{
@@ -147,7 +155,19 @@ Edit(id:any) {
   var categoria = producto.data.category_id
   var provedor = producto.data.supplier_id
   
-  //aqui hice la peticion, donde se extrae el numero de proveedore y se saca con el .length
+  setTimeout(() => {
+    var nombre = producto.data.name;
+    var descripcion = producto.data.description;
+    var stock = producto.data.stock;
+    var categoria = producto.data.category_id;
+    var proveedor = producto.data.supplier_id;
+    console.log("Nombre:", nombre);
+    console.log("Descripción:", descripcion);
+    console.log("Stock:", stock);
+    console.log("Categoría:", categoria);
+    console.log("Proveedor:", proveedor);
+  }, 300);
+  //Se hace la peticion, se extrae el numero de proveedore y se saca con el .length
   var indiceP = this.provedores.data.length
     //Ya que se tiene el numero de proveedores, se inicializa en 0 para ir accediendo a los valores del array
   var iP = 0
@@ -170,7 +190,7 @@ Edit(id:any) {
       iC++
     } while (iC < indiceC);
   Swal.fire({
-    title: '¿Deseas editar el producto?',
+    title: '¿Deseas editar nuevo producto?',
     html: `<form>
         <div class="mb-3">
           <input type="text" class="form-control" id="nombre" value="`+nombre+`">
@@ -242,7 +262,7 @@ Edit(id:any) {
 }
 
 
-//Eliminar producto ya funcionaaa
+//Eliminar producto
 Delete(id: any) {
   Swal.fire({
     title: '¿Estás seguro de que quieres eliminar este producto?',
