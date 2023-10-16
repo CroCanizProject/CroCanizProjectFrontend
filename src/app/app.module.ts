@@ -10,6 +10,9 @@ import { DashboardComponent } from './Components/dashboard/dashboard.component';
 import { TokenInterceptor } from './Interceptors/token.interceptor';
 import { CategoriesComponent } from './Components/dashboard/categories/categories.component';
 import { SupplierComponent } from './Components/dashboard/supplier/supplier.component';
+import { MasterComponent } from './Components/master/master.component';
+import { HeaderMainComponent } from './Components/header-main/header-main.component';
+import { GeneralBarComponent } from './Components/general-bar/general-bar.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +20,10 @@ import { SupplierComponent } from './Components/dashboard/supplier/supplier.comp
     LoginComponent,
     DashboardComponent,
     CategoriesComponent,
-    SupplierComponent
+    SupplierComponent,
+    MasterComponent,
+    HeaderMainComponent,
+    GeneralBarComponent
   ],
   imports: [
     BrowserModule,

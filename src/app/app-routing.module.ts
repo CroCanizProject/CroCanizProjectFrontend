@@ -12,8 +12,9 @@ const ROUTES:Routes = [
 
   {path: '', component: LoginComponent, pathMatch:'full'},
   {path: 'dashboard', component: DashboardComponent, pathMatch:'full', canActivate:[]},
-  {path: 'categories',component: CategoriesComponent, pathMatch: 'full', canActivate: []},
-  {path: 'suppliers', component: SupplierComponent, pathMatch: 'full', canActivate: []}
+  {path: 'categories',component: CategoriesComponent, canActivate: []},
+  {path: 'suppliers',component: SupplierComponent, canActivate: []},
+ 
 
 ]
 

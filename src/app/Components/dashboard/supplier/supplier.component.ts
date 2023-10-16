@@ -8,9 +8,9 @@ import Swal from 'sweetalert2';
 })
 export class SupplierComponent {
 
-  constructor(private service: SupplierComponent){}
+  // constructor(private service: SupplierComponent){}
   
-  supplier:any
+  // supplier:any
 
   
 

@@ -14,7 +14,7 @@ export class LoginComponent {
   type: string = "password";
   isText: boolean = false;
   eyeIcon: string = "fa-eye-slash";
-  loginForm!: FormGroup;
+    loginForm!: FormGroup;
 
 
 constructor(private fb: FormBuilder,public router: Router,private auth:AuthService) {}

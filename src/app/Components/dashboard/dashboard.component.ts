@@ -10,11 +10,7 @@ import { AuthService } from 'src/Services/auth.service';
 })
 export class DashboardComponent {
 
-  constructor(private fb: FormBuilder,public router: Router,private auth:AuthService) {}
-
-  logout(){
-    this.auth.signOut();
-  }
+  
 
 
   

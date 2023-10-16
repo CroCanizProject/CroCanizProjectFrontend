@@ -1,31 +1,5 @@
-<br>
-<h2>Proveedores</h2>
+<app-header-main></app-header-main>
 
-<div style="display: flex; justify-content: end;">
-    <button type="button"  class="btn btn-success">Nuevo</button>   
-  </div>
-  <br>
-<table class="table">
-    <thead class="table table-danger">
-      <tr>
-        <th scope="col">ID</th>
-        <th scope="col">Nombre del Proveedor</th>
-        <th scope="col">RFC</th>
-        <th scope="col">Acciones</th>
-      
-      </tr>
-    </thead>
-    <tbody *ngFor="let Supplier of supplier.data">
-      <tr>
-        <th scope="row">{{Supplier.id}}</th>
-        <th scope="row">{{Supplier.nameSupplier}}</th>
-        <th scope="row">{{Supplier.rfc}}</th>
-        <th>
-          <div style="display: flex; flex-direction:row;">
-          <button type="button" style="margin-right: 10px;" class="btn btn-danger">Eliminar</button>
-          <button type="button" class="btn btn-primary">Editar</button>
-          </div>
-        </th>        
-      </tr>
-    </tbody>
-  </table>
+<app-general-bar>
+  <h1>Hola</h1>
+</app-general-bar>
