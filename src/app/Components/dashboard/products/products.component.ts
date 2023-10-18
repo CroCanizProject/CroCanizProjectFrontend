@@ -4,14 +4,20 @@ import { ProductsService } from 'src/Services/products.service';
 import { SupplierService } from 'src/Services/supplier.service';
 import { DomSanitizer } from '@angular/platform-browser';
 import Swal from 'sweetalert2';
+import * as XLSX from 'xlsx';
+
+
 
 @Component({
   selector: 'app-products',
   templateUrl: './products.component.html',
   styleUrls: ['./products.component.css']
 })
+
+
 export class ProductsComponent {
 
+  
 
   constructor(private service: ProductsService, private serviceP: SupplierService, private serviceC: CategoriesService, private sanitizer:DomSanitizer){}
  
@@ -19,6 +25,7 @@ export class ProductsComponent {
   categorias: any
   provedores: any
   urlImg: any
+ 
   
 
   ngOnInit() {
@@ -38,6 +45,18 @@ export class ProductsComponent {
       this.urlImg = this.sanitizer.bypassSecurityTrustUrl
     }, 300);
   }
+
+  
+
+  exportToExcel() {
+    const ws: XLSX.WorkSheet = XLSX.utils.table_to_sheet(document.getElementById('tableProducts'));
+    const wb: XLSX.WorkBook = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(wb, ws, 'Productos existentes');
+    XLSX.writeFile(wb, 'Productos Disponibles.xlsx');
+  }
+
+
+
 
 
 //Agregar nuevo producto
@@ -293,3 +312,7 @@ Delete(id: any) {
 
 
 }
+function html2canvas(data: HTMLElement | null) {
+  throw new Error('Function not implemented.');
+}
+

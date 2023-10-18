@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { CategoriesService } from 'src/Services/categories.service';
 import Swal from 'sweetalert2';
+import * as XLSX from 'xlsx';
 
 @Component({
   selector: 'app-categories',
@@ -18,6 +19,15 @@ export class CategoriesComponent {
       this.categories = data
     })
   }
+
+
+  exportToExcel() {
+    const ws: XLSX.WorkSheet = XLSX.utils.table_to_sheet(document.getElementById('tableCategories'));
+    const wb: XLSX.WorkBook = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(wb, ws, 'Categorias existentes');
+    XLSX.writeFile(wb, 'Categorias Disponibles.xlsx');
+  }
+
 
   //Agregar nueva categoria
   Add() {

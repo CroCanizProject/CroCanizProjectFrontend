@@ -1,0 +1,60 @@
+<app-header-main></app-header-main>
+
+
+    
+    <app-general-bar>
+        <div style="display: flex; justify-content: end;">
+            <!-- <button type="button"  class="btn btn-primary" (click)="Edit()" >Editar</button>    -->
+              
+        
+          </div>
+          
+        <div class="row">
+            <div class="col-sm-6">
+              <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title">Correos electrónicos</h5>
+                  <p class="card-text" *ngFor="let itemEmail of (data | keyvalue | slice:1:2)">{{itemEmail.value}} </p>
+                  <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title">Descripción</h5>
+                  <p class="card-text" *ngFor="let itemDescripcion of (data | keyvalue | slice:0:1)" >{{itemDescripcion.value}}</p>
+                  <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
+                </div>
+              </div>
+            </div>
+          </div>
+
+        <div class="row">
+            <div class="col-sm-6">
+              <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title">Misión</h5>
+                  <p class="card-text" *ngFor="let itemVision of (data | keyvalue | slice:3:4)">{{itemVision.value}} </p>
+                  <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title">Visión</h5>
+                  <p class="card-text" *ngFor="let itemVision of (data | keyvalue | slice:4:5)" >{{itemVision.value}}</p>
+                  <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+        
+        
+           
+          
+    </app-general-bar>
+

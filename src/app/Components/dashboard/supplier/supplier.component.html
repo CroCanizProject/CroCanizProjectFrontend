@@ -3,33 +3,35 @@
 <app-general-bar>
   <br>
   <h2 style="text-align: center;">Proveedores</h2>
-  
+
   <div style="display: flex; justify-content: end;">
-      <button type="button"  class="btn btn-success" (click)="Add()" >Nuevo</button>   
-    </div>
-    <br>
-  <table class="table">
-      <thead class="table table-danger">
-        <tr>
-          <th scope="col">NP</th>
-          <th scope="col">Nombre</th>
-          <th scope="col">RFC</th>
-          <th scope="col">Acciones</th>
-        
-        </tr>
-      </thead>
-      <tbody *ngFor="let indice = index; let Supplier of suppliers.data">
-        <tr>
-          <th scope="row">{{indice+1}}</th>
-          <th scope="row">{{Supplier.nameSupplier}}</th>
-          <th scope="row">{{Supplier.rfc}}</th>
-          <th>
-            <div style="display: flex; flex-direction:row;">
-            <button type="button" style="margin-right: 10px;" class="btn btn-danger" (click)="Delete(Supplier.id)">Eliminar</button>
+    <button type="button" class="btn btn-primary" (click)="Add()">Nuevo</button>
+    <button type="button" class="btn btn-success" (click)="exportToExcel()">Exportar a Excel</button>
+  </div>
+  <br>
+  <table class="table" id="tableSuppliers">
+    <thead class="table table-danger">
+      <tr>
+        <th scope="col">NP</th>
+        <th scope="col">Nombre</th>
+        <th scope="col">RFC</th>
+        <th scope="col">Acciones</th>
+
+      </tr>
+    </thead>
+    <tbody *ngFor="let indice = index; let Supplier of suppliers.data">
+      <tr>
+        <th scope="row">{{indice+1}}</th>
+        <th scope="row">{{Supplier.nameSupplier}}</th>
+        <th scope="row">{{Supplier.rfc}}</th>
+        <th>
+          <div style="display: flex; flex-direction:row;">
+            <button type="button" style="margin-right: 10px;" class="btn btn-danger"
+              (click)="Delete(Supplier.id)">Eliminar</button>
             <button type="button" class="btn btn-primary" (click)="Edit(Supplier.id)">Editar</button>
-            </div>
-          </th>        
-        </tr>
-      </tbody>
-    </table>
+          </div>
+        </th>
+      </tr>
+    </tbody>
+  </table>
 </app-general-bar>

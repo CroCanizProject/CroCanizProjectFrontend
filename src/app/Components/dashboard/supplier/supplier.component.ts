@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { SupplierService } from 'src/Services/supplier.service';
 import Swal from 'sweetalert2';
+import * as XLSX from 'xlsx';
 
 @Component({
   selector: 'app-supplier',
@@ -18,6 +19,17 @@ export class SupplierComponent {
       this.suppliers = data
     })
   }
+
+
+  exportToExcel() {
+    const ws: XLSX.WorkSheet = XLSX.utils.table_to_sheet(document.getElementById('tableSuppliers'));
+    const wb: XLSX.WorkBook = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(wb, ws, 'Proveedores existentes');
+    XLSX.writeFile(wb, 'Proveedores Disponibles.xlsx');
+  }
+
+
+
 //Agregar nuevo proveedor
 Add() {
   var nombre: any

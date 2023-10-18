@@ -5,12 +5,32 @@
   <h2 style="text-align: center;">Productos</h2>
   
   <div style="display: flex; justify-content: end;">
-      <button type="button"  class="btn btn-success" (click)="Add()" >Nuevo</button>   
+      <button type="button"  class="btn btn-primary" (click)="Add()" >Nuevo</button>   
+      <button type="button"  class="btn btn-success" (click)="exportToExcel()" >Exportar a Excel</button>   
+        
+  
     </div>
+    <div class="row g-3 align-items-center">
+      <div class="col-auto">
+          <label class="col-form-label">Busqueda: </label>
+      </div>
+      <div class="col-auto">
+          <input id="txtBusqueda" type="text" onkeyup="Buscar();" class="form-control" aria-describedby="Filtro de busqueda">
+      </div>
+      <div class="col-auto">
+          <span id="passwordHelpInline" class="form-text">
+              Coloca una palabra clave para realizar la búsqueda
+          </span>
+      </div>
+  </div>
+
+
+
+
     <br>
-  <table class="table">
+  <table class="table" id="tableProducts">
       <thead class="table table-danger">
-        <tr>
+        <tr >
           <th scope="col">NP</th>
           <th scope="col">Nombre</th>
           <th scope="col">Descripción</th>
@@ -29,7 +49,7 @@
           <th scope="row">{{Productos.stock}}</th>
           <th scope="row">{{Productos.category.name}}</th>
           <th scope="row">{{Productos.supplier.nameSupplier}}</th>
-          <th><img src="'{{urlImg}}'" width="50px" height="50px" /></th>
+          <th><img src="{{Productos.image.url}}" width="50px" height="50px" /></th>
 
 
 

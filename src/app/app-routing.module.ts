@@ -7,6 +7,7 @@ import { DashboardComponent } from './Components/dashboard/dashboard.component';
 import { AuthGuard } from './Guards/auth.guard';
 import { SupplierComponent } from './Components/dashboard/supplier/supplier.component';
 import { ProductsComponent } from './Components/dashboard/products/products.component';
+import { GeneralInformationComponent } from './Components/dashboard/general-information/general-information.component';
 
 
 const ROUTES:Routes = [
@@ -16,6 +17,7 @@ const ROUTES:Routes = [
   {path: 'categories',component: CategoriesComponent, canActivate: []},
   {path: 'suppliers',component: SupplierComponent, canActivate: []},
   {path: 'products',component: ProductsComponent, canActivate: []},
+  {path: 'generalInformation',component: GeneralInformationComponent, canActivate: []},
 
 
 ]
