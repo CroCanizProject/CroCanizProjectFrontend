@@ -5,7 +5,7 @@
   <h2 style="text-align: center;">Productos</h2>
   
   <div style="display: flex; justify-content: end;">
-      <button type="button"  class="btn btn-primary" (click)="Add()" >Nuevo</button>   
+      <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="addModal()">Nuevo</button>   
       <button type="button"  class="btn btn-success" (click)="exportToExcel()" >Exportar a Excel</button>   
         
   
@@ -15,7 +15,7 @@
           <label class="col-form-label">Busqueda: </label>
       </div>
       <div class="col-auto">
-          <input id="txtBusqueda" type="text" onkeyup="Buscar();" class="form-control" aria-describedby="Filtro de busqueda">
+          <input id="txtBusqueda" type="text" class="form-control" aria-describedby="Filtro de busqueda">
       </div>
       <div class="col-auto">
           <span id="passwordHelpInline" class="form-text">
@@ -36,18 +36,20 @@
           <th scope="col">Descripción</th>
           <th scope="col">Stock</th>
           <th scope="col">Categoria</th>
+          <th class="col">Precio</th>   
           <th scope="col">Proveedor</th>
           <th scope="col">Imagen </th>
           <th scope="col">Acciones</th>
         </tr>
       </thead>
-      <tbody *ngFor="let indice = index; let Productos of products.data">
+      <tbody *ngFor="let indice = index; let Productos of products?.data">
         <tr>
           <th scope="row">{{indice+1}}</th>
           <th scope="row">{{Productos.name}}</th>
           <th scope="row">{{Productos.description}}</th>
           <th scope="row">{{Productos.stock}}</th>
           <th scope="row">{{Productos.category.name}}</th>
+          <th scope="row">${{Productos.price}}</th>
           <th scope="row">{{Productos.supplier.nameSupplier}}</th>
           <th><img src="{{Productos.image.url}}" width="50px" height="50px" /></th>
 
@@ -56,10 +58,38 @@
           <th>
             <div style="display: flex; flex-direction:row;">
             <button type="button" style="margin-right: 10px;" class="btn btn-danger" (click)="Delete(Productos.id)">Eliminar</button>
-            <button type="button" class="btn btn-primary" (click)="Edit(Productos.id)">Editar</button>
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="editModal(Productos)">Editar</button>
             </div>
           </th>        
         </tr>
       </tbody> 
     </table>
+<!-- Button trigger modal
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+  Launch demo modal
+</button> -->
+
+<!-- Modal ------------------------------------------------------------>
+<div class="modal fade" data-bs-backdrop="static" data-bs-keyboard="false" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">{{modalTitle}}</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="closeModal()"></button>
+      </div>
+      <div class="modal-body">
+        <app-add-edit-product [Producto]="Producto" *ngIf="activatAddEdditProducts"></app-add-edit-product>
+      </div>
+    </div>
+  </div>
+</div>
 </app-general-bar>
+
+<script>
+const myModal = document.getElementById('myModal')
+const myInput = document.getElementById('myInput')
+
+myModal.addEventListener('shown.bs.modal', () => {
+  myInput.focus()
+})
+</script>

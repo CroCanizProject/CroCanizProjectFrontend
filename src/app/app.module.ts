@@ -15,6 +15,7 @@ import { HeaderMainComponent } from './Components/header-main/header-main.compon
 import { GeneralBarComponent } from './Components/general-bar/general-bar.component';
 import { ProductsComponent } from './Components/dashboard/products/products.component';
 import { GeneralInformationComponent } from './Components/dashboard/general-information/general-information.component';
+import { AddEditProductComponent } from './Components/dashboard/products/add-edit-product/add-edit-product.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { GeneralInformationComponent } from './Components/dashboard/general-info
     HeaderMainComponent,
     GeneralBarComponent,
     ProductsComponent,
-    GeneralInformationComponent
+    GeneralInformationComponent,
+    AddEditProductComponent
   ],
   imports: [
     BrowserModule,
