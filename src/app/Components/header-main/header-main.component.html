@@ -2,16 +2,38 @@
     <div >
         <img src="../../../assets/img/canis-feliz logo del menu.png" alt="Foto de perfil" style="width: 60px; height: 60px; margin-left: 20%;">
     </div>
-    <h1> Cro Caniz </h1>
-    <div class="search">
+    <h1 style="font-family: monospace;"> Canis Feliz  </h1>
+    <!-- <div class="search">
         <input type="text" placeholder="Buscar">
         <button><i class="fas fa-search"></i></button>
-    </div>
+    </div> -->
 
     <nav>
 <!--perfil con opciones-->
 <!-- Example single danger button -->
-<div class="dropdown">
+<div mdbDropdown class="dropdown">
+    <button
+      class="btn dropdown-toggle"
+      type="button"
+      id="dropdownMenu2"
+      mdbDropdownToggle
+      aria-expanded="false"
+      style="margin-right: 30px; background-color: rgb(229, 228, 218)"
+    >
+    <img src="../../../assets/img/perfil.png" style="width: 25px; height: 25px;">
+      {{ userData.name }} <br>
+      {{ userData.rol }}
+    </button>
+    <ul mdbDropdownMenu class="dropdown-menu" aria-labelledby="dropdownMenu2">
+      <li><button class="dropdown-item" type="button">Opción 1</button></li>
+      <li><button class="dropdown-item" type="button">Opción 2</button></li>
+      <li>
+        <button class="dropdown-item" type="button" (click)="logout()">Salir de sesión</button>
+      </li>
+    </ul>
+  </div>
+  
+<!-- <div class="dropdown">
     <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
       Botón Dropdown
     </button>
@@ -23,10 +45,10 @@
   </div>
         <h5>{{userData.name}}</h5>
         <h5>{{userData.rol}}</h5>
+-->
+    <!-- <button (click)="logout()" type="button" class="btn btn-danger" style="padding: 4%;">Cerrar sesión</button> -->
 
-        <button (click)="logout()" type="button" class="btn btn-danger" style="padding: 4%;">Cerrar sesión</button>
-
-        <!-- <div class="dropdown">
+        <!---<div class="dropdown">
             <button type="button" class="btn btn-secondary dropdown-toggle" onclick="toggleDropdown()">Mostrar Lista</button>
             <div class="dropdown-content" id="myDropdown">
                 <ul class="dropdown-list">
