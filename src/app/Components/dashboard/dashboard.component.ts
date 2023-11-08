@@ -10,8 +10,8 @@ import { AuthService } from 'src/Services/auth.service';
 })
 export class DashboardComponent {
 
-  
-
+currentRol= localStorage.getItem("rol")
+currentUserData = {'name': localStorage.getItem("userName"), 'rol': localStorage.getItem("rol")}
 
   
 

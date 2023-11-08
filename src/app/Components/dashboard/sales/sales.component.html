@@ -2,10 +2,10 @@
 
 <app-general-bar [rol]="currentRol"> 
   <br>
-  <h2 style="text-align: center;">Categorias</h2>
+  <h2 style="text-align: center;">Ventas</h2>
 
   <div style="display: flex; justify-content: end;">
-    <button  *ngIf="currentRol == 'admin'" type="button" class="btn btn-primary" (click)="Add()">Nuevo</button>
+    <!-- <button  *ngIf="currentRol == 'admin'" type="button" class="btn btn-primary" (click)="Add()">Nuevo</button> -->
     <button type="button" class="btn btn-success" (click)="exportToExcel()">Exportar a Excel</button>
   </div>
   <br>
@@ -19,7 +19,7 @@
 
       </tr>
     </thead>
-    <tbody *ngFor="let indice = index; let Category of categories.data">
+    <!-- <tbody *ngFor="let indice = index; let Category of sales.data">
       <tr>
         <th scope="row">{{indice+1}}</th>
         <th scope="row">{{Category.name}}</th>
@@ -33,6 +33,6 @@
           </div>
         </th>
       </tr>
-    </tbody>
+    </tbody> -->
   </table>
 </app-general-bar>

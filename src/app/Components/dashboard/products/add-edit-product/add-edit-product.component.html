@@ -1,6 +1,6 @@
     <form [formGroup]="ProductoForm">
     <div class="mb-3">
-      <label  class="control-label">Nombre de prodcuto:</label>
+      <label  class="control-label">Nombre de producto:</label>
       <input type="text" class="form-control" id="nombre" formControlName="name" name="=name">
     </div>
     <div class="mb-3">
@@ -9,7 +9,7 @@
     </div>
     <div class="mb-3">
       <label  class="control-label">Stock: </label>
-    <input type="number" class="form-control" id="stock" formControlName="stock" name="stock" >
+    <input type="number" class="form-control" id="stock" formControlName="stock" name="stock" min="0">
     </div>
     <label class> Seleccionar Categoria:</label>
      <div class="mb-3">

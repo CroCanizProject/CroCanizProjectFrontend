@@ -1,12 +1,12 @@
-<app-header-main></app-header-main>
+<app-header-main  [userData]="currentUserData"></app-header-main>
 
-<app-general-bar>
+<app-general-bar [rol]="currentRol">
   <br>
   <h2 style="text-align: center;">Productos</h2>
   
   <div style="display: flex; justify-content: end;">
-      <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="addModal()">Nuevo</button>   
-      <button type="button"  class="btn btn-success" (click)="exportToExcel()" >Exportar a Excel</button>   
+      <button *ngIf="currentRol == 'admin'" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="addModal()">Nuevo</button>   
+      <button *ngIf="currentRol == 'admin'" type="button"  class="btn btn-success" (click)="exportToExcel()" >Exportar a Excel</button>   
         
   
     </div>
@@ -39,7 +39,7 @@
           <th class="col">Precio</th>   
           <th scope="col">Proveedor</th>
           <th scope="col">Imagen </th>
-          <th scope="col">Acciones</th>
+          <th *ngIf="currentRol == 'admin'" scope="col">Acciones</th>
         </tr>
       </thead>
       <tbody *ngFor="let indice = index; let Productos of products?.data">
@@ -55,7 +55,7 @@
 
 
 
-          <th>
+          <th *ngIf="currentRol == 'admin'">
             <div style="display: flex; flex-direction:row;">
             <button type="button" style="margin-right: 10px;" class="btn btn-danger" (click)="Delete(Productos.id)">Eliminar</button>
             <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="editModal(Productos)">Editar</button>

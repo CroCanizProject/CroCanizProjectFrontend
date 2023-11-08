@@ -15,7 +15,7 @@ export class AuthService {
   url:string = "https://backend.crocainz.live/api/"
 
 
-  signIn(authentication: any):Observable<Auth>{
+  signIn(authentication: any):Observable<any>{
 
     let direccion = this.url + "login";
     return this.http.post<Auth>(direccion, authentication)

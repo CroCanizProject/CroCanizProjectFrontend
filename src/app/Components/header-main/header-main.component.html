@@ -9,6 +9,21 @@
     </div>
 
     <nav>
+<!--perfil con opciones-->
+<!-- Example single danger button -->
+<div class="dropdown">
+    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+      Botón Dropdown
+    </button>
+    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+      <li><a class="dropdown-item" href="#">Acción</a></li>
+      <li><a class="dropdown-item" href="#">Otra acción</a></li>
+      <li><a class="dropdown-item" href="#">Algo más aqui</a></li>
+    </ul>
+  </div>
+        <h5>{{userData.name}}</h5>
+        <h5>{{userData.rol}}</h5>
+
         <button (click)="logout()" type="button" class="btn btn-danger" style="padding: 4%;">Cerrar sesión</button>
 
         <!-- <div class="dropdown">

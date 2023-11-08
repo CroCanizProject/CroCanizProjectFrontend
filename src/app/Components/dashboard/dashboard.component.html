@@ -1,10 +1,11 @@
 
-<app-header-main></app-header-main>
+<app-header-main [userData]="currentUserData"></app-header-main>
 
 
 <body>
     
-    <app-general-bar>
+    <app-general-bar [rol]="currentRol">
+        
         <h2 style="text-align: center;">Bienvendo </h2>
         <img src="../../../assets/img/Humaaans - Research.png" style="width: 100%; height: 100%;">
     </app-general-bar>

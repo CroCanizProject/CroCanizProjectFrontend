@@ -16,6 +16,9 @@ import { GeneralBarComponent } from './Components/general-bar/general-bar.compon
 import { ProductsComponent } from './Components/dashboard/products/products.component';
 import { GeneralInformationComponent } from './Components/dashboard/general-information/general-information.component';
 import { AddEditProductComponent } from './Components/dashboard/products/add-edit-product/add-edit-product.component';
+import { UsersComponent } from './Components/users/users.component';
+import { SalesComponent } from './Components/dashboard/sales/sales.component';
+import { EditUserComponent } from './Components/users/edit-user/edit-user.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +32,10 @@ import { AddEditProductComponent } from './Components/dashboard/products/add-edi
     GeneralBarComponent,
     ProductsComponent,
     GeneralInformationComponent,
-    AddEditProductComponent
+    AddEditProductComponent,
+    UsersComponent,
+    SalesComponent,
+    EditUserComponent
   ],
   imports: [
     BrowserModule,

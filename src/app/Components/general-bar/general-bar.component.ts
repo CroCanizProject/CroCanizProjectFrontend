@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-general-bar',
@@ -6,5 +6,14 @@ import { Component } from '@angular/core';
   styleUrls: ['./general-bar.component.css']
 })
 export class GeneralBarComponent {
+//variable global para roles
+
+
+  OnInit(){
+    
+  }
+  @Input() rol:any;
+
 
 }
+

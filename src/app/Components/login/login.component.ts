@@ -42,6 +42,10 @@ onLogin(){
         
         this.auth.storeToken(res.access_token)
         localStorage.setItem("access_token", res.access_token);
+        localStorage.setItem("userName", res.data.name);
+        let datos = res.data;
+        localStorage.setItem("rol", datos.roles[0].name);
+        console.log(res.data.roles)
         this.router.navigate(['dashboard']);
         Swal.fire({
           position: 'top-end',

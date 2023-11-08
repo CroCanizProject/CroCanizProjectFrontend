@@ -2,7 +2,7 @@ import { Component, Input } from '@angular/core';
 import { CategoriesService } from 'src/Services/categories.service';
 import { SupplierService } from 'src/Services/supplier.service';
 import { ProductsService } from 'src/Services/products.service';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import Swal from 'sweetalert2';
 
 
@@ -52,23 +52,23 @@ onFileSelected(event: Event) {
     if(this.Producto != null){
       // Asigna los valores del producto a las propiedades del componente
     this.ProductoForm=this.fb.group({
-      name: [this.Producto.name],
-      description: [this.Producto.description],
-      stock: [this.Producto.stock],
-      price: [this.Producto.price],
-      category_id: [''],
-      supplier_id: [''],
-      image: ['']
+      name: [this.Producto.name, Validators.required],
+      description: [this.Producto.description, Validators.required],
+      stock: [this.Producto.stock, Validators.required],
+      price: [this.Producto.price, Validators.required],
+      category_id: ['', Validators.required],
+      supplier_id: ['', Validators.required],
+      image: ['', Validators.required]
     })
   }else{
     this.ProductoForm=this.fb.group({
-      name: [''],
-      description: [''],
-      stock: [''],
-      price: [''],
-      category_id: [''],
-      supplier_id: [''],
-      image: ['']
+      name: ['', Validators.required],
+      description: ['', Validators.required],
+      stock: ['', Validators.required],
+      price: ['', Validators.required],
+      category_id: ['', Validators.required],
+      supplier_id: ['', Validators.required],
+      image: ['', Validators.required]
     })
   }
     // Obtiene datos de categorías y se suscribe al Observable para actualizar categorias
@@ -84,8 +84,9 @@ onFileSelected(event: Event) {
     });
     
   }
-// Validar datos y mandar
+// Validar datos y mandar a servidor
 onSubmit() {
+  if(this.ProductoForm.valid){
 console.log(this.selectedFile)
   // Agregar la imagen solo si se ha seleccionado un archivo
   const formData = new FormData();
@@ -98,16 +99,44 @@ console.log(this.selectedFile)
   formData.append('image', this.selectedFile, this.selectedFile.name)
   
 
+
   // Aquí llamas al servicio para guardar los datos usando formData
   this.ProductoService.addProduct(formData)
-    .subscribe((response) => {
-        window.location.reload();
-    });
+    .subscribe(
+      (response) => {
+        Swal.fire({
+          title: 'Listo!!',
+          text: 'El producto ha sido creado correctamente.',
+          icon: 'success',
+          confirmButtonText: 'Aceptar'
+        });
+        setTimeout(() => {
+          window.location.reload();
+        }, 3000);
+        
+      },
+      (error) => {
+        Swal.fire({
+          title: 'Error!',
+          text: 'Ha ocurrido un error al crear el producto.',
+          icon: 'error',
+          confirmButtonText: 'Aceptar'
+        });
+      }
+      );
+  }else{
+    Swal.fire({
+      icon: 'error',
+      title: '¡Error!',
+      text: 'Al parecer aún no has llenado los campos',
+    })
+  }
 }
 
 
+//Editar producto
 update(id:number){
-  
+  if(this.ProductoForm.valid){
   const formData = new FormData();
   formData.append('name', this.ProductoForm.value.name);
   formData.append('description', this.ProductoForm.value.description);
@@ -126,7 +155,10 @@ update(id:number){
         icon: 'success',
         confirmButtonText: 'Aceptar'
       });
-      window.location.reload();
+      setTimeout(() => {
+        window.location.reload();
+      }, 3000);
+      
     },
     (error) => {
       Swal.fire({
@@ -137,4 +169,16 @@ update(id:number){
       });
     }
     );
-}}
+   }
+   else{
+    Swal.fire({
+        icon: 'error',
+        title: '¡Error!',
+        text: 'Al parecer aún no has llenado los campos',
+    })
+   }
+ }
+
+
+
+}

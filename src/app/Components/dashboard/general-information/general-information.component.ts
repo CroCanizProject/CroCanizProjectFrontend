@@ -9,6 +9,10 @@ import Swal from 'sweetalert2';
 })
 export class GeneralInformationComponent {
 
+  currentRol= localStorage.getItem("rol")
+  currentUserData = {'name': localStorage.getItem("userName"), 'rol': localStorage.getItem("rol")}
+
+
   constructor(private gi: GeneralIService) { }
 
   data: any

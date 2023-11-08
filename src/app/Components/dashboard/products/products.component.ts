@@ -17,8 +17,9 @@ import * as $ from 'jquery';
 
 export class ProductsComponent {
 
+  currentRol= localStorage.getItem("rol")
+  currentUserData = {'name': localStorage.getItem("userName"), 'rol': localStorage.getItem("rol")}
   
-
   constructor(private service: ProductsService, private serviceP: SupplierService, private serviceC: CategoriesService, private sanitizer:DomSanitizer){}
  
   products: any

@@ -1,11 +1,11 @@
-<app-header-main></app-header-main>
-
-<app-general-bar>
+<app-header-main [userData]="currentUserData"> </app-header-main>
+ 
+<app-general-bar [rol]="currentRol">
   <br>
   <h2 style="text-align: center;">Proveedores</h2>
 
   <div style="display: flex; justify-content: end;">
-    <button type="button" class="btn btn-primary" (click)="Add()">Nuevo</button>
+    <button  *ngIf="currentRol == 'admin'" type="button" class="btn btn-primary" (click)="Add()">Nuevo</button>
     <button type="button" class="btn btn-success" (click)="exportToExcel()">Exportar a Excel</button>
   </div>
   <br>
@@ -15,7 +15,7 @@
         <th scope="col">NP</th>
         <th scope="col">Nombre</th>
         <th scope="col">RFC</th>
-        <th scope="col">Acciones</th>
+        <th  *ngIf="currentRol == 'admin'" scope="col">Acciones</th>
 
       </tr>
     </thead>
@@ -24,7 +24,8 @@
         <th scope="row">{{indice+1}}</th>
         <th scope="row">{{Supplier.nameSupplier}}</th>
         <th scope="row">{{Supplier.rfc}}</th>
-        <th>
+        
+        <th  *ngIf="currentRol == 'admin'">
           <div style="display: flex; flex-direction:row;">
             <button type="button" style="margin-right: 10px;" class="btn btn-danger"
               (click)="Delete(Supplier.id)">Eliminar</button>

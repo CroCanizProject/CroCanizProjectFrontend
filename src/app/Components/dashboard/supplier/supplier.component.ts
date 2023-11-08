@@ -10,6 +10,10 @@ import * as XLSX from 'xlsx';
 })
 export class SupplierComponent {
 
+  currentRol= localStorage.getItem("rol")
+  currentUserData = {'name': localStorage.getItem("userName"), 'rol': localStorage.getItem("rol")}
+
+  
   constructor(private service: SupplierService){}
   
   suppliers:any

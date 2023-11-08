@@ -1,0 +1,41 @@
+<app-header-main [userData]="currentUserData"></app-header-main>
+
+<app-general-bar  [rol]="currentRol">
+  <br>
+  <h2 style="text-align: center;">Usuarios</h2>
+
+  <div style="display: flex; justify-content: end;">
+    <button type="button" class="btn btn-primary" (click)="Add()">Nuevo</button>
+    <button type="button" class="btn btn-success">Exportar a Excel</button>
+  </div>
+  <br>
+  <table class="table" id="tableUsers">
+    <thead class="table table-danger">
+      <tr>
+        <th scope="col">NP</th>
+        <th scope="col">Nombre</th>
+        <th scope="col">Correo</th>
+        <th scope="col">Contraseña</th>
+        <th scope="col">Rol</th>
+        <th scope="col">Acciones</th>
+
+      </tr>
+    </thead>
+    <tbody *ngFor="let indice = index; let user of Users">
+      <tr>
+        <th scope="row">{{indice+1}}</th>
+        <th scope="row">{{user.name}}</th>
+        <th scope="row">{{user.email}}</th>
+        <th scope="row">{{user.password}}</th>
+        <th scope="row" *ngFor="let role of user.roles">{{role.name}}</th>
+        <th>
+          <div style="display: flex; flex-direction:row;">
+            <!-- <button type="button" style="margin-right: 10px;" class="btn btn-danger"
+              (click)="Delete(User.id)">Eliminar</button> -->
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="editModal(Usuario)">Editar</button> 
+        </div>
+        </th>
+      </tr>
+    </tbody>
+  </table> 
+</app-general-bar>
