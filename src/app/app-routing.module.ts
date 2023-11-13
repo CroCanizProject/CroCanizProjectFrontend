@@ -14,14 +14,14 @@ import { SalesComponent } from './Components/dashboard/sales/sales.component';
 const ROUTES:Routes = [
 
   {path: '', component: LoginComponent, pathMatch:'full'},
-  {path: 'dashboard', component: DashboardComponent, pathMatch:'full', canActivate:[]},
-  {path: 'users',component: UsersComponent, canActivate: []},
-  {path: 'generalInformation',component: GeneralInformationComponent, canActivate: []},
-  {path: 'categories',component: CategoriesComponent, canActivate: []},
-  {path: 'suppliers',component: SupplierComponent, canActivate: []},
-  {path: 'products',component: ProductsComponent, canActivate: []},
-  {path: 'generalInformation',component: GeneralInformationComponent, canActivate: []},
-  {path: 'sales',component: SalesComponent, canActivate: []},
+  {path: 'dashboard', component: DashboardComponent, pathMatch:'full', canActivate:[AuthGuard]},
+  {path: 'users',component: UsersComponent, canActivate: [AuthGuard]},
+  {path: 'generalInformation',component: GeneralInformationComponent, canActivate: [AuthGuard]},
+  {path: 'categories',component: CategoriesComponent, canActivate: [AuthGuard]},
+  {path: 'suppliers',component: SupplierComponent, canActivate: [AuthGuard]},
+  {path: 'products',component: ProductsComponent, canActivate: [AuthGuard]},
+  {path: 'generalInformation',component: GeneralInformationComponent, canActivate: [AuthGuard]},
+  {path: 'sales',component: SalesComponent, canActivate: [AuthGuard]},
 
 ]
 

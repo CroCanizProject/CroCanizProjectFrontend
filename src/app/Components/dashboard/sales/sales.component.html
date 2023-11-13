@@ -13,26 +13,26 @@
     <thead class="table table-danger">
       <tr>
         <th scope="col">NP</th>
-        <th scope="col">Nombre</th>
-        <th scope="col">Descripción</th>
-        <th  *ngIf="currentRol == 'admin'" scope="col">Acciones</th>
-
+        <th scope="col">Tipo</th>
+        <th scope="col">Stripe_id</th>
+        <!-- <th scope="col">Adrees_id</th> -->
       </tr>
     </thead>
-    <!-- <tbody *ngFor="let indice = index; let Category of sales.data">
+    <tbody *ngFor="let indice = index; let Sale of Sale">
       <tr>
         <th scope="row">{{indice+1}}</th>
-        <th scope="row">{{Category.name}}</th>
-        <th scope="row">{{Category.description}}</th>
+        <th scope="row">{{Sale.type}}</th>
+        <th scope="row">{{Sale.stripe_id}}</th>
+        <!-- <th scope="row">{{Sale.address_id}}</th> -->
 
         <th  *ngIf="currentRol == 'admin'">
           <div style="display: flex; flex-direction:row;">
-            <button type="button" style="margin-right: 10px;" class="btn btn-danger"
+            <!-- <button type="button" style="margin-right: 10px;" class="btn btn-danger"
               (click)="Delete(Category.id)">Eliminar</button>
-            <button type="button" class="btn btn-primary" (click)="Edit(Category.id)">Editar</button>
+            <button type="button" class="btn btn-primary" (click)="Edit(Category.id)">Editar</button> -->
           </div>
         </th>
       </tr>
-    </tbody> -->
+    </tbody>
   </table>
 </app-general-bar>

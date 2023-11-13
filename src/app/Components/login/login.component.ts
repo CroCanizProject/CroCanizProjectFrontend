@@ -56,19 +56,14 @@ onLogin(){
         })
       },
     })
-  //  Swal.fire({
-  //    icon: 'error',
-  //    title: '¡Credenciales incorrectas!',
-  //    text: 'Usuario ó contraseña incorrecto. Favor de verificar',
-  //   })
+   
   }else{
-    
-    this.validateAllFormsFileds(this.loginForm);
-   Swal.fire({
+    Swal.fire({
       icon: 'error',
-      title: '¡Error!',
-      text: 'Al parecer aún no has llenado los campos',
-    })
+      title: '¡Credenciales incorrectas!',
+      text: 'Usuario ó contraseña incorrecto. Favor de verificar',
+     })
+   
   }
 }
 

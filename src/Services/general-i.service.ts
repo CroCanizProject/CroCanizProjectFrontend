@@ -16,7 +16,7 @@ export class GeneralIService {
   }
 
   updateGeneralInfo(data:any){
-    let direccion = this.url + "companyinformation" ;
+    let direccion = this.url + "companyinformation/1" ;
     return this.http.put(direccion, data)
   }
 

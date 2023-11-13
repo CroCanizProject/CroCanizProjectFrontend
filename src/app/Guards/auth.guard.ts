@@ -15,14 +15,14 @@ export class AuthGuard implements CanActivate {
     if(this.auth.isLoggenIn()){
       return true
     }else{
-      // Swal.fire({
-      //   icon: 'error',
-      //   title: 'Oops...',
-      //   text: 'Aún no inicias sesión',
-      // })
-      // this.router.navigate(['/']);
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Aún no inicias sesión',
+      })
+      this.router.navigate(['/']);
 
-      return true;
+      return false;
      
     }
   }
