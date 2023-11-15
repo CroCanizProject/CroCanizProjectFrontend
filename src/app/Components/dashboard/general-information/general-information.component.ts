@@ -10,11 +10,11 @@ import * as $ from 'jquery';
 })
 export class GeneralInformationComponent {
 
-  // Obtiene el rol y el nombre del usuario actual desde el almacenamiento local
+  // Obtengo el rol y el nombre del usuario actual desde el almacenamiento local
   currentRol = localStorage.getItem("rol")
   currentUserData = { 'name': localStorage.getItem("userName"), 'rol': localStorage.getItem("rol") }
 
-  // Inyecta el servicio GeneralIService
+  // mando a llamar  el servicio GeneralIService
   constructor(private gi: GeneralIService) { }
 
   // Variables para almacenar la información general
