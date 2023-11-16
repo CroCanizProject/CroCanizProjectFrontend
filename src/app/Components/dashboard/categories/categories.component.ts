@@ -178,6 +178,13 @@ export class CategoriesComponent {
 
   }
 
-
+//BUSQUEDA DE CADA TABLA
+onChange(event: any){
+  var value = event.target.value
+  $("#tableCategories tr").filter(function() {
+    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+    return true;
+  });
+}
 }
 

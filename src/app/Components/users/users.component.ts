@@ -72,23 +72,24 @@ export class UsersComponent {
       contraseña2 = document.getElementById("contraseña2");
       rol = document.getElementById("rol");
       if (result.isConfirmed) {
-        if (contraseña != contraseña2) {
-          Swal.fire({
-            title: 'Las contraseñas no coinciden, intenta de nuevo',
-            showDenyButton: false,
-            icon: 'error',
-            confirmButtonText: 'Aceptar',
-          });
-        } else {
-          const usuario = { name: nombre.value, email: correo.value, password: contraseña.value, role: rol.value };
-          if (nombre.value == null && correo.value == null && contraseña == null, rol == null || nombre.value == "" || correo.value == "" || contraseña.value == "" || rol.value == "") {
+        const usuario = { name: nombre.value, email: correo.value, password: contraseña.value, role: rol.value };
+         if (nombre.value == null && correo.value == null && contraseña == null, rol == null || nombre.value == "" || correo.value == "" || contraseña.value == "" || rol.value == "") {
             Swal.fire({
               title: 'Por favor llena los campos!',
               showDenyButton: false,
               icon: 'error',
               confirmButtonText: 'Aceptar',
             });
-          } else {
+          }
+          else if(contraseña != contraseña2) {
+            Swal.fire({
+              title: 'Las contraseñas no coinciden, intenta de nuevo',
+              showDenyButton: false,
+              icon: 'error',
+              confirmButtonText: 'Aceptar',
+            });
+          }  
+          else {
             this.service.Add(usuario).subscribe(
               (data) => window.location.reload(),
               error => {
@@ -108,10 +109,10 @@ export class UsersComponent {
             });
           }
         }
-      } else {
-      }
-    });
-  }
+        
+      } 
+    )
+}
 
   Usuario: any 
   modalTitle: any
@@ -124,4 +125,12 @@ export class UsersComponent {
     
     
     }
+     //BUSQUEDA DE CADA TABLA
+ onChange(event: any){
+  var value = event.target.value
+  $("#tableUsers tr").filter(function() {
+    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+    return true;
+  });
+}
 }

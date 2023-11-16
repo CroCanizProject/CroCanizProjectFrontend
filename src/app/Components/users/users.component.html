@@ -8,13 +8,13 @@
     <button type="button" class="btn btn-primary" (click)="Add()" style="margin-right: 10px;">Nuevo</button>
     <button type="button" class="btn btn-success">Exportar a Excel</button>
   </div>
-  <!--botton de filtro de busqueda-->
-  <div class="row g-3 align-items-center">
+   <!--Boton de busqueda-->
+   <div class="row g-3 align-items-center">
     <div class="col-auto">
         <label class="col-form-label">Busqueda: </label>
     </div>
     <div class="col-auto">
-        <input id="txtBusqueda" type="text" class="form-control" aria-describedby="Filtro de busqueda">
+        <input id="txtBusqueda" type="text" class="form-control" (input)="onChange($event)" />
     </div>
     <div class="col-auto">
         <span id="passwordHelpInline" class="form-text">

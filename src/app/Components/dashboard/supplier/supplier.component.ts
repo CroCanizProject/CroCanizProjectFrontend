@@ -178,22 +178,14 @@ Delete(id: any) {
     }
   })
 
+  
+ }
+ //BUSQUEDA DE CADA TABLA
+ onChange(event: any){
+  var value = event.target.value
+  $("#tableSuppliers tr").filter(function() {
+    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+    return true;
+  });
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 }

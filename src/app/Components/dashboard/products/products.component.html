@@ -16,7 +16,7 @@
           <label class="col-form-label">Busqueda: </label>
       </div>
       <div class="col-auto">
-          <input id="txtBusqueda" type="text" class="form-control" aria-describedby="Filtro de busqueda">
+          <input id="txtBusqueda" type="text" class="form-control" (input)="onChange($event)" />
       </div>
       <div class="col-auto">
           <span id="passwordHelpInline" class="form-text">
@@ -24,8 +24,6 @@
           </span>
       </div>
     </div>
-
-
 
 
     <br>

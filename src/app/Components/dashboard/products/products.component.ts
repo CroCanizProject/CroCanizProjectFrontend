@@ -99,12 +99,20 @@ Delete(id: any) {
       // this.service.deleteCategory(id).subscribe((data) => {
       //   window.location.reload()
       // })
-    }
-  })
+      }
+    })
+  }
+
+  //BUSQUEDA DE CADA TABLA
+  onChange(event: any){
+    var value = event.target.value
+    $("#tableProducts tr").filter(function() {
+      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+      return true;
+    });
+  }
 }
 
-
-}
 function html2canvas(data: HTMLElement | null) {
   throw new Error('Function not implemented.');
 }

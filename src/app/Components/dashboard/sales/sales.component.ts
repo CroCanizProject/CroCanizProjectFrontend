@@ -29,5 +29,12 @@ export class SalesComponent {
     XLSX.utils.book_append_sheet(wb, ws, 'Ventas');
     XLSX.writeFile(wb, 'Ventas.xlsx');
   }
-
+//BUSQUEDA DE CADA TABLA
+onChange(event: any){
+  var value = event.target.value
+  $("#table tr").filter(function() {
+    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+    return true;
+  });
+}
 }
