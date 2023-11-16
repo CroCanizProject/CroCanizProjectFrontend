@@ -88,7 +88,7 @@ Delete(id: any) {
     if (result.isConfirmed) {
       this.service.deleteProduct(id).subscribe(data => {
         Swal.fire(
-          'Deleted!',
+          'Eliminado!',
           'Eliminado con éxito',
           'success'
         ),

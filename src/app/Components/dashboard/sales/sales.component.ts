@@ -24,10 +24,10 @@ export class SalesComponent {
   }
 
   exportToExcel() {
-    const ws: XLSX.WorkSheet = XLSX.utils.table_to_sheet(document.getElementById('tableCategories'));
+    const ws: XLSX.WorkSheet = XLSX.utils.table_to_sheet(document.getElementById('tableSales'));
     const wb: XLSX.WorkBook = XLSX.utils.book_new();
-    XLSX.utils.book_append_sheet(wb, ws, 'Categorias existentes');
-    XLSX.writeFile(wb, 'Categorias Disponibles.xlsx');
+    XLSX.utils.book_append_sheet(wb, ws, 'Ventas');
+    XLSX.writeFile(wb, 'Ventas.xlsx');
   }
 
 }
