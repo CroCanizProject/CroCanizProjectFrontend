@@ -38,9 +38,11 @@ export class LoginComponent {
       this.auth.signIn(this.loginForm.value)
         .subscribe({
           next: (res) => {
-            this.auth.storeToken(res.data.access_token);
             let datos = res.data;
+            this.auth.storeToken(res.data.access_token);
+            localStorage.setItem("userName", res.data.name);
             localStorage.setItem("rol", datos.roles[0].name);
+            localStorage.setItem("access_token", res.data.access_token);
             this.router.navigate(['dashboard']);
             Swal.fire({
               position: 'top-end',
