@@ -13,80 +13,69 @@ export class LoginComponent {
 
   type: string = "password";
   isText: boolean = false;
-  eyeIcon: string = "fa-eye-slash";
-    loginForm!: FormGroup;
+  eyeIcon: string = "fa-eye";
+  loginForm!: FormGroup;
 
+  constructor(private fb: FormBuilder, public router: Router, private auth: AuthService) { }
 
-constructor(private fb: FormBuilder,public router: Router,private auth:AuthService) {}
-
-ngOnInit() {
-  this.loginForm = this.fb.group({
-      email: [''],
-      password: ['']
-    })
-}
-
-
-
-
-onLogin(){
-  console.log(this.loginForm.value)
-  if(this.loginForm.valid){
-    console.log(this.loginForm.value)
-    this.auth.signIn(this.loginForm.value)
-    .subscribe({
-      next: (res) =>{
-        // console.log(res.access_token);
-        // console.log(res.data.nameUser)
-        // //console.log(res.rolA.nameRole)
-        
-        this.auth.storeToken(res.data.access_token)
-        localStorage.setItem("access_token", res.data.access_token);
-        localStorage.setItem("userName", res.data.name);
-        let datos = res.data;
-        localStorage.setItem("rol", datos.roles[0].name);
-        // console.log(res.data.roles)
-        this.router.navigate(['dashboard']);
-        Swal.fire({
-          position: 'top-end',
-          icon: 'success',
-          title: '¡Bienvenido!',
-          showConfirmButton: false,
-          timer: 1500,
-        })
-      },
-    })
-   
-  }else{
-    Swal.fire({
-      icon: 'error',
-      title: '¡Credenciales incorrectas!',
-      text: 'Usuario ó contraseña incorrecto. Favor de verificar',
-     })
-   
+  ngOnInit() {
+    this.loginForm = this.fb.group({
+      email: ['', Validators.required],
+      password: ['', Validators.required]
+    });
   }
-}
 
-ocultarContrasena() {
-  this.isText = !this.isText;
-  // Revisar la condición para cambiar la contraseña
-  this.isText ? this.eyeIcon = "fa-eye" : this.eyeIcon = 'fa-eye-slash';
-  this.isText ? this.type = "text" : this.type = "password"
-}
-
-private validateAllFormsFileds(formGroup: FormGroup) {
-  Object.keys(formGroup.controls).forEach(field => {
-    const control = formGroup.get(field);
-    if (control instanceof FormControl) {
-      control?.markAsDirty({ onlySelf: true })
-    } else if (control instanceof FormGroup) {
-      this.validateAllFormsFileds(control)
+  onLogin() {
+    if (this.loginForm.invalid) {
+      Swal.fire({
+        position: 'top-end',
+        icon: 'warning',
+        title: 'Por favor, llena todos los campos',
+        showConfirmButton: false,
+        timer: 1500,
+      });
+    } else {
+      this.auth.signIn(this.loginForm.value)
+        .subscribe({
+          next: (res) => {
+            this.auth.storeToken(res.data.access_token);
+            let datos = res.data;
+            localStorage.setItem("rol", datos.roles[0].name);
+            this.router.navigate(['dashboard']);
+            Swal.fire({
+              position: 'top-end',
+              icon: 'success',
+              title: '¡Bienvenido!',
+              showConfirmButton: false,
+              timer: 1500,
+            });
+          },
+          error: (err) => {
+            Swal.fire({
+              icon: 'error',
+              title: 'Credenciales incorrectas',
+              text: 'Usuario o contraseña incorrectos. Favor de verificar',
+            });
+          }
+        });
     }
-  })
+  }
 
-}
+  ocultarContrasena() {
+    this.isText = !this.isText;
+    // Revisar la condición para cambiar la contraseña
+    this.isText ? this.eyeIcon = "fa-eye" : this.eyeIcon = 'fa-eye-slash';
+    this.isText ? this.type = "text" : this.type = "password";
+  }
 
-
-
-
+  private validateAllFormsFileds(formGroup: FormGroup) {
+    Object.keys(formGroup.controls).forEach(field => {
+      const control = formGroup.get(field);
+      if (control instanceof FormControl) {
+        control?.markAsDirty({ onlySelf: true });
+      } else if (control instanceof FormGroup) {
+        this.validateAllFormsFileds(control);
+      }
+    });
+  }
 }
