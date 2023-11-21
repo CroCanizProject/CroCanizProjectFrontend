@@ -10,25 +10,20 @@
 
     <nav>
 <!--perfil con opciones-->
-<img src="../../../assets/img/perfil.png" style="width: 25px; height: 25px;"> 
-      {{ userData.name }} - 
-      {{ userData.rol }}
-
 
 <div class="dropdown">
     <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-      Botón Dropdown
+        <img src="../../../assets/img/perfil.png" style="width: 25px; height: 25px;"> 
+        {{ userData.name }} - 
+        {{ userData.rol }}
     </button>
     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-      <li><a class="dropdown-item" href="#">Acción</a></li>
-      <li><a class="dropdown-item" href="#">Otra acción</a></li>
-      <li><a class="dropdown-item" href="#">Algo más aqui</a></li>
+      <li (click)="logout()" type="button" class="btn" style="padding: 4%;">Cerrar sesión</li>
     </ul>
   </div>
-        <h5>{{userData.name}}</h5>
-        <h5>{{userData.rol}}</h5>
 
-    <button (click)="logout()" type="button" class="btn" style="padding: 4%;">Cerrar sesión</button>
+
+    
 <br>
        
     </nav>
