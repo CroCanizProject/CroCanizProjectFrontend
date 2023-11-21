@@ -34,10 +34,12 @@
         <!-- <th scope="col">Adrees_id</th> -->
       </tr>
     </thead>
+    <div class="container" *ngIf="loading"><img src="../../../assets/img/loading-bar.gif"></div>
+
     <tbody *ngFor="let indice = index; let Sale of Sale">
       <tr>
         <th scope="row">{{indice+1}}</th>
-        <th scope="row">{{Sale.type}}</th>
+        <th *ngIf="!loading" scope="row">{{Sale.type}}</th>
         <th scope="row">{{Sale.stripe_id}}</th>
         <!-- <th scope="row">{{Sale.address_id}}</th> -->
 

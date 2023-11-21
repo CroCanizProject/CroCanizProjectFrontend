@@ -16,11 +16,15 @@ export class UsersComponent {
   constructor(private service: UsersService) {}
 
   Users: any;
-
+  loading:boolean = true;
   ngOnInit() {
     this.service.getUsers().subscribe((data) => {
       this.Users = data.data;
-      console.log(this.Users = data.data);
+      this.loading=false
+    },
+    (error)=>{
+      console.log(error);
+      this.loading=false
     });
   }
 
@@ -125,6 +129,10 @@ export class UsersComponent {
     
     
     }
+    closeModal(){
+      this.activatEditUsers=false
+    }
+    
      //BUSQUEDA DE CADA TABLA
  onChange(event: any){
   var value = event.target.value

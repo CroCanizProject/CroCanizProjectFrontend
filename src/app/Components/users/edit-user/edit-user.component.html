@@ -1,19 +1,23 @@
 <form [formGroup]="UsuarioForm">
     <div class="mb-3">
       <label  class="control-label">Nombre de usuario:</label>
-      <input type="text" class="form-control" id="nombre" formControlName="name" name="=name">
+      <input type="text" class="form-control" id="nombre"  name="name" formControlName="name" value="{{Usuario.name}}">
     </div>
     <div class="mb-3">
       <label  class="control-label">Correo:</label>
-      <input type="text" class="form-control" id="correo" formControlName="email" name="email">
+      <input type="text" class="form-control" id="correo"  name="email" formControlName="email" value="{{Usuario.email}}">
     </div>
     <div class="mb-3">
       <label  class="control-label">Contraseña: </label>
-    <input type="text" class="form-control" id="contraseña" formControlName="password" name="password">
+    <input type="text" class="form-control" id="contraseña"  name="password" formControlName="password">
     </div>
      <div class="mb-3">
       <label  class="control-label">Rol:</label>
-      <input type="text" class="form-control" id="rol" formControlName="role" name="role">
+      <select class="form-control" id="role" formControlName="role">
+        <option value="{{Usuario.roles[0].name}}" disabled hidden selected>{{Usuario.roles[0].name}}</option>  
+        <option value="admin">Admin</option>  
+        <option value="subadmin">SubAdmin</option>     
+      </select> 
       </div>
 </form>
 <div class="col-md-3">

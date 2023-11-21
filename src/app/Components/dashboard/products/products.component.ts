@@ -30,13 +30,19 @@ export class ProductsComponent {
   activatAddEdditProducts: Boolean=false
   Producto:any;
   
+  loading:boolean=true;
 
   ngOnInit() {
     this.service.getProducts().subscribe((data) => {
       this.products = data
       this.urlImg =this.products.data[0].image.url
       console.log(this.urlImg)
-    })
+      this.loading=false
+    },
+    (error)=>{
+  console.log(error);
+  this.loading=false
+    });
 
   }
 

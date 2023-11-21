@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { error } from 'jquery';
 import { SupplierService } from 'src/Services/supplier.service';
 import Swal from 'sweetalert2';
 import * as XLSX from 'xlsx';
@@ -17,11 +18,17 @@ export class SupplierComponent {
   constructor(private service: SupplierService){}
   
   suppliers:any
+  loading: boolean= true;
 
   ngOnInit() {
     this.service.getSuppliers().subscribe((data) => {
       this.suppliers = data
-    })
+      this.loading=false
+    },
+    (error)=>{
+      console.log(error);
+      this.loading=false
+    });
   }
 
 

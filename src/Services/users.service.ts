@@ -19,9 +19,9 @@ export class UsersService {
     return this.http.post(this.url+"roles/users",data)
   }
 
-  updateUser(id: any, data: any) {
-    let direccion = this.url + "roles/users" + id + "?_method=PATCH";
-    return this.http.post(direccion, data);
+  update(id: any, data: any) {
+    let direccion = this.url + "users/" + id; 
+    return this.http.put(direccion, data);
   }
   
 }

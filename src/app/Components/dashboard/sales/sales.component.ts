@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { error } from 'jquery';
 import { SalesService } from 'src/Services/sales.service';
 import Swal from 'sweetalert2';
 import * as XLSX from 'xlsx';
@@ -15,11 +16,17 @@ export class SalesComponent {
 
   constructor(private service: SalesService) {}
   Sale: any;
+  loading:boolean=true;
 
   ngOnInit() {
     this.service.getSales().subscribe((data) => {
       this.Sale = data;
+      this.loading=false
       console.log(this.Sale);
+    },
+    (error)=>{
+    console.log(error);
+    this.loading=false
     });
   }
 

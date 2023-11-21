@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { error } from 'jquery';
 import { CategoriesService } from 'src/Services/categories.service';
 import Swal from 'sweetalert2';
 import * as XLSX from 'xlsx';
@@ -17,11 +18,16 @@ export class CategoriesComponent {
   constructor(private service: CategoriesService) { }
 
   categories: any
+  loading:boolean=true;
 
   ngOnInit() {
     this.service.getCategories().subscribe((data) => {
       this.categories = data
-    })
+      this.loading=false
+    },
+    (error)=>{
+      console.log(error);
+    });
   }
 
 

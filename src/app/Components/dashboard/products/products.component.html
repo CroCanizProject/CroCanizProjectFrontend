@@ -41,10 +41,12 @@
           <th *ngIf="currentRol == 'admin'" scope="col">Acciones</th>
         </tr>
       </thead>
+      <div class="container" *ngIf="loading"><img src="../../../assets/img/loading-bar.gif"></div>
+
       <tbody *ngFor="let indice = index; let Productos of products?.data">
         <tr>
           <th scope="row">{{indice+1}}</th>
-          <th scope="row">{{Productos.name}}</th>
+          <th *ngIf="!loading" scope="row">{{Productos.name}}</th>
           <th scope="row">{{Productos.description}}</th>
           <th scope="row">{{Productos.stock}}</th>
           <th scope="row">{{Productos.category.name}}</th>

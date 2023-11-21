@@ -34,10 +34,12 @@
 
       </tr>
     </thead>
+    <div class="container" *ngIf="loading"><img src="../../../assets/img/loading-bar.gif"></div>
+
     <tbody *ngFor="let indice = index; let Supplier of suppliers.data">
       <tr>
         <th scope="row">{{indice+1}}</th>
-        <th scope="row">{{Supplier.nameSupplier}}</th>
+        <th *ngIf="!loading" scope="row">{{Supplier.nameSupplier}}</th>
         <th scope="row">{{Supplier.rfc}}</th>
         
         <th  *ngIf="currentRol == 'admin'">

@@ -34,10 +34,12 @@
 
       </tr>
     </thead>
+    <div class="container" *ngIf="loading"><img src="../../../assets/img/loading-bar.gif"></div>
+
     <tbody *ngFor="let indice = index; let Category of categories.data">
       <tr>
         <th scope="row">{{indice+1}}</th>
-        <th scope="row">{{Category.name}}</th>
+        <th *ngIf="!loading"  scope="row">{{Category.name}}</th>
         <th scope="row">{{Category.description}}</th>
 
         <th  *ngIf="currentRol == 'admin'">

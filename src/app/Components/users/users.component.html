@@ -35,10 +35,13 @@
 
       </tr>
     </thead>
+    <div class="container" *ngIf="loading"><img src="../../../assets/img/loading-bar.gif"></div>
+
     <tbody *ngFor="let indice = index; let user of Users">
       <tr>
+
         <th scope="row">{{indice+1}}</th>
-        <th scope="row">{{user.name}}</th>
+        <th *ngIf="!loading" scope="row">{{user.name}}</th>
         <th scope="row">{{user.email}}</th>
         <!-- <th scope="row">{{user.password}}</th> -->
         <th scope="row" *ngFor="let role of user.roles">{{role.name}}</th>
@@ -46,10 +49,24 @@
           <div style="display: flex; flex-direction:row;">
             <!-- <button type="button" style="margin-right: 10px;" class="btn btn-danger"
               (click)="Delete(User.id)">Eliminar</button> -->
-            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="editModal(Usuario)">Editar</button> 
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="editModal(user)">Editar</button> 
         </div>
         </th>
       </tr>
     </tbody>
   </table> 
+  <!-- Modal ------------------------------------------------------------>
+<div class="modal fade" data-bs-backdrop="static" data-bs-keyboard="false" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">{{modalTitle}}</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="closeModal()"></button>
+      </div>
+      <div class="modal-body">
+        <app-edit-user [Usuario]="Usuario" *ngIf="activatEditUsers"></app-edit-user>
+      </div>
+    </div>
+  </div>
+</div>
 </app-general-bar>
