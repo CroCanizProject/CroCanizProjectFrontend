@@ -53,10 +53,10 @@ export class UsersComponent {
             <input type="text" class="form-control" id="correo" placeholder="Correo:">
           </div>
           <div class="mb-3">
-            <input type="text" class="form-control" id="contraseña" placeholder="Contraseña:">
+            <input type="password" class="form-control" id="contraseña" placeholder="Contraseña:">
           </div>
           <div class="mb-3">
-            <input type="text" class="form-control" id="contraseña2" placeholder="Confirmar contraseña:">
+            <input type="password" class="form-control" id="contraseña2" placeholder="Confirmar contraseña:">
           </div>
           <div class="mb-3">
             <select class="form-control" id="rol">
@@ -85,7 +85,7 @@ export class UsersComponent {
               confirmButtonText: 'Aceptar',
             });
           }
-          else if(contraseña != contraseña2) {
+          else if(contraseña.value !== contraseña2.value) {
             Swal.fire({
               title: 'Las contraseñas no coinciden, intenta de nuevo',
               showDenyButton: false,
